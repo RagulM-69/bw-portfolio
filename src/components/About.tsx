@@ -81,7 +81,7 @@ export default function About() {
           {/* Right Side: Stats */}
           <div className="flex-1 flex flex-col w-full lg:items-end">
             <div className="grid grid-cols-2 gap-16 w-full lg:w-auto">
-              <AnimatedCounter value={6} suffix="+" label="Projects Built" />
+              <AnimatedCounter value={15} suffix="+" label="Projects Built" />
               <AnimatedCounter value={15} suffix="+" label="Technologies Explored" />
               <AnimatedCounter value={3} suffix="+" label="Years Learning Programming" />
               <AnimatedCounter value={7} suffix="+" label="Global Certifications" />

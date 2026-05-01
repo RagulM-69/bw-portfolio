@@ -15,7 +15,7 @@ const FEATURED_DETAIL = [
       "An intelligent resume analysis tool that evaluates how well a resume matches a job description.",
     detail:
       "ResuSloth helps job seekers optimize their resumes to pass modern Applicant Tracking Systems (ATS) and increase interview chances. Get an AI-powered ATS score, skill gap detection, and actionable insights.",
-    link: "#",
+    link: "https://github.com/RagulM-69",
   },
   {
     id: 1,
@@ -25,7 +25,7 @@ const FEATURED_DETAIL = [
       "A lightweight AI-powered summarization tool that instantly converts long content into clear, concise summaries.",
     detail:
       "Built for researchers, students, and professionals who need rapid insight extraction. Paste any article, document or URL and receive a structured summary with key takeaways in seconds.",
-    link: "#",
+    link: "https://github.com/RagulM-69",
   },
   {
     id: 2,
@@ -35,7 +35,7 @@ const FEATURED_DETAIL = [
       "Production organization website for a devotional trust featuring online donations, merchandise, deeds, and community features.",
     detail:
       "A full-stack web platform built with Next.js, featuring secure Stripe-powered donations, a merchandise shop, a public deeds showcase, contact integration, and a private admin dashboard for content management.",
-    link: "#",
+    link: "https://github.com/RagulM-69",
   },
 ];
 
@@ -80,10 +80,10 @@ function FeaturedDetail({ project }: { project: (typeof FEATURED_DETAIL)[0] }) {
         <p className="text-[#0A0A0A]/60 text-base leading-relaxed font-medium">
           {project.detail}
         </p>
-        <button className="flex items-center gap-3 border-b-2 border-[#0A0A0A] pb-1 self-start hover:text-[#0A0A0A]/50 hover:border-[#0A0A0A]/50 text-[#0A0A0A] transition-colors group mt-2">
+        <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 border-b-2 border-[#0A0A0A] pb-1 self-start hover:text-[#0A0A0A]/50 hover:border-[#0A0A0A]/50 text-[#0A0A0A] transition-colors group mt-2">
           <span className="uppercase tracking-widest text-sm font-bold">View Project</span>
           <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-        </button>
+        </a>
       </motion.div>
     </AnimatePresence>
   );
@@ -165,38 +165,40 @@ export default function Projects() {
               transition={{ delay: i * 0.1, duration: 0.8 }}
               className="h-full"
             >
-              <ThreeDCard
-                className="h-full"
-                cardClassName="h-full bg-[#0A0A0A] rounded-xl border border-[#F5F1EA]/10 p-8 flex flex-col justify-between cursor-pointer overflow-hidden"
-                maxRotation={12}
-                glowOpacity={0.15}
-                glowColor="245,241,234"
-                shadowBlur={40}
-                parallaxOffset={20}
-              >
-                {/* Ghost number */}
-                <div className="absolute text-[#F5F1EA]/5 -right-4 -top-8 text-[12rem] font-black pointer-events-none select-none">
-                  0{i + 1}
-                </div>
+              <a href="https://github.com/RagulM-69" target="_blank" rel="noopener noreferrer" className="block h-full">
+                <ThreeDCard
+                  className="h-full"
+                  cardClassName="h-full bg-[#0A0A0A] rounded-xl border border-[#F5F1EA]/10 p-8 flex flex-col justify-between cursor-pointer overflow-hidden group"
+                  maxRotation={12}
+                  glowOpacity={0.15}
+                  glowColor="245,241,234"
+                  shadowBlur={40}
+                  parallaxOffset={20}
+                >
+                  {/* Ghost number */}
+                  <div className="absolute text-[#F5F1EA]/5 -right-4 -top-8 text-[12rem] font-black pointer-events-none select-none">
+                    0{i + 1}
+                  </div>
 
-                <div className="flex flex-col gap-4">
-                  <span className="text-[#F5F1EA]/50 text-xs font-bold tracking-widest uppercase">
-                    {project.tags}
-                  </span>
-                  <h4 className="text-2xl lg:text-3xl font-black tracking-tight text-[#F5F1EA] leading-snug">
-                    {project.title}
-                  </h4>
-                  <p className="text-[#F5F1EA]/70 font-medium leading-relaxed mt-2 text-sm">
-                    {project.desc}
-                  </p>
-                  <div className="w-12 h-[2px] bg-[#F5F1EA]/30 mt-4" />
-                </div>
+                  <div className="flex flex-col gap-4">
+                    <span className="text-[#F5F1EA]/50 text-xs font-bold tracking-widest uppercase">
+                      {project.tags}
+                    </span>
+                    <h4 className="text-2xl lg:text-3xl font-black tracking-tight text-[#F5F1EA] leading-snug group-hover:text-white transition-colors duration-300">
+                      {project.title}
+                    </h4>
+                    <p className="text-[#F5F1EA]/70 font-medium leading-relaxed mt-2 text-sm">
+                      {project.desc}
+                    </p>
+                    <div className="w-12 h-[2px] bg-[#F5F1EA]/30 mt-4 group-hover:w-full group-hover:bg-[#F5F1EA] transition-all duration-500" />
+                  </div>
 
-                <div className="flex justify-between items-end text-[#F5F1EA]/60 mt-10">
-                  <span className="text-sm tracking-widest uppercase font-bold">View Project</span>
-                  <ArrowUpRight className="w-6 h-6" />
-                </div>
-              </ThreeDCard>
+                  <div className="flex justify-between items-end text-[#F5F1EA]/60 group-hover:text-[#F5F1EA] transition-colors duration-300 mt-10">
+                    <span className="text-sm tracking-widest uppercase font-bold">View Project</span>
+                    <ArrowUpRight className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                  </div>
+                </ThreeDCard>
+              </a>
             </motion.div>
           ))}
         </div>
