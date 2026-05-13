@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useMemo, useState } from "react";
 
 function FloatingParticles() {
   const particles = useMemo(() => Array.from({ length: 30 }), []);
@@ -27,6 +27,41 @@ function FloatingParticles() {
           }}
         />
       ))}
+    </div>
+  );
+}
+
+function ResumeButton() {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <div className="relative flex flex-col items-center">
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0, y: 6, scale: 0.92 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 6, scale: 0.92 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="absolute -top-16 left-1/2 -translate-x-1/2 whitespace-nowrap z-50"
+          >
+            <div className="bg-[#F5F1EA] text-[#0A0A0A] text-[11px] font-bold tracking-wide px-4 py-2 rounded-lg shadow-2xl border border-[#0A0A0A]/10">
+              🤨 Bro, you&apos;re literally ON my portfolio.
+            </div>
+            {/* Arrow */}
+            <div className="w-3 h-3 bg-[#F5F1EA] border-r border-b border-[#0A0A0A]/10 rotate-45 mx-auto -mt-1.5" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <button
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onClick={() => setHovered(true)}
+        className="px-8 py-4 border border-[#F5F1EA]/30 text-[#F5F1EA] bg-transparent text-sm tracking-widest uppercase font-bold hover:border-[#F5F1EA] transition-colors duration-500 rounded-sm"
+      >
+        Download Resume
+      </button>
     </div>
   );
 }
@@ -74,12 +109,16 @@ export default function Hero() {
           transition={{ duration: 1, delay: 1.2 }}
           className="flex flex-col sm:flex-row gap-6 mt-12 mix-blend-difference"
         >
-          <button className="px-8 py-4 border border-[#F5F1EA] text-[#0A0A0A] bg-[#F5F1EA] text-sm tracking-widest uppercase font-bold hover:bg-transparent hover:text-[#F5F1EA] transition-colors duration-500 rounded-sm">
+          {/* View My Work — scrolls to projects */}
+          <button
+            onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+            className="px-8 py-4 border border-[#F5F1EA] text-[#0A0A0A] bg-[#F5F1EA] text-sm tracking-widest uppercase font-bold hover:bg-transparent hover:text-[#F5F1EA] transition-colors duration-500 rounded-sm"
+          >
             View My Work
           </button>
-          <button className="px-8 py-4 border border-[#F5F1EA]/30 text-[#F5F1EA] bg-transparent text-sm tracking-widest uppercase font-bold hover:border-[#F5F1EA] transition-colors duration-500 rounded-sm">
-            Download Resume
-          </button>
+
+          {/* Resume button with funny tooltip */}
+          <ResumeButton />
         </motion.div>
       </div>
 

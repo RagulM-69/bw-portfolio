@@ -15,7 +15,8 @@ const FEATURED_DETAIL = [
       "An intelligent resume analysis tool that evaluates how well a resume matches a job description.",
     detail:
       "ResuSloth helps job seekers optimize their resumes to pass modern Applicant Tracking Systems (ATS) and increase interview chances. Get an AI-powered ATS score, skill gap detection, and actionable insights.",
-    link: "https://github.com/RagulM-69",
+    link: "https://resu-sloth.vercel.app/",
+    image: "/projects/resusloth.png",
   },
   {
     id: 1,
@@ -25,7 +26,8 @@ const FEATURED_DETAIL = [
       "A lightweight AI-powered summarization tool that instantly converts long content into clear, concise summaries.",
     detail:
       "Built for researchers, students, and professionals who need rapid insight extraction. Paste any article, document or URL and receive a structured summary with key takeaways in seconds.",
-    link: "https://github.com/RagulM-69",
+    link: "https://sloth-summarizer.onrender.com/",
+    image: "/projects/slothsummarizer.png",
   },
   {
     id: 2,
@@ -35,7 +37,8 @@ const FEATURED_DETAIL = [
       "Production organization website for a devotional trust featuring online donations, merchandise, deeds, and community features.",
     detail:
       "A full-stack web platform built with Next.js, featuring secure Stripe-powered donations, a merchandise shop, a public deeds showcase, contact integration, and a private admin dashboard for content management.",
-    link: "https://github.com/RagulM-69",
+    link: "https://www.voiceofdharmafoundation.org/",
+    image: "/projects/devotional.png",
   },
 ];
 
@@ -44,16 +47,22 @@ const MINOR_PROJECTS = [
     title: "Cuddle Cart",
     desc: "A community-driven eCommerce platform for baby/kids products, combining smart shopping with trusted parenting insights and an AI Chatbot.",
     tags: "FlutterFlow — Supabase",
+    link: "https://pookie-project-fpeyh4.flutterflow.app/finalHomePage",
+    image: "/projects/cuddlecart.png",
   },
   {
     title: "LivelyChat",
     desc: "A modern real-time chat platform designed for seamless and responsive communication using WebSockets and Node.js.",
     tags: "JavaScript — Node.js",
+    link: "https://likelychat-1.onrender.com/",
+    image: "/projects/livelychat.png",
   },
   {
     title: "Interactive Weather App",
     desc: "Provides real-time weather information and global forecasts through a clean, responsive, and dynamic interface.",
     tags: "JavaScript — Weather API",
+    link: "https://weather-app-69.vercel.app/",
+    image: "/projects/weather.png",
   },
 ];
 
@@ -74,13 +83,18 @@ function FeaturedDetail({ project }: { project: (typeof FEATURED_DETAIL)[0] }) {
         <h3 className="text-4xl md:text-5xl font-black text-[#0A0A0A] tracking-tighter leading-tight">
           {project.title}
         </h3>
-        <p className="text-[#0A0A0A]/80 text-lg md:text-xl leading-relaxed font-medium">
+        <p className="text-[#0A0A0A]/80 text-lg leading-relaxed font-medium">
           {project.description}
         </p>
-        <p className="text-[#0A0A0A]/60 text-base leading-relaxed font-medium">
+        <p className="text-[#0A0A0A]/55 text-sm leading-relaxed">
           {project.detail}
         </p>
-        <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 border-b-2 border-[#0A0A0A] pb-1 self-start hover:text-[#0A0A0A]/50 hover:border-[#0A0A0A]/50 text-[#0A0A0A] transition-colors group mt-2">
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 border-b-2 border-[#0A0A0A] pb-1 self-start hover:text-[#0A0A0A]/50 hover:border-[#0A0A0A]/50 text-[#0A0A0A] transition-colors group mt-2"
+        >
           <span className="uppercase tracking-widest text-sm font-bold">View Project</span>
           <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
         </a>
@@ -94,7 +108,7 @@ export default function Projects() {
   const activeProject = FEATURED_DETAIL[activeId];
 
   return (
-    <section className="relative w-full py-32 px-6 bg-transparent z-10 flex flex-col items-center">
+    <section id="projects" className="relative w-full py-32 px-6 bg-transparent z-10 flex flex-col items-center">
       <div className="max-w-7xl w-full mx-auto">
 
         {/* Section header */}
@@ -113,49 +127,34 @@ export default function Projects() {
         </motion.div>
 
         {/* Featured block */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center border-b-2 border-[#0A0A0A]/10 pb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center border-b-2 border-[#0A0A0A]/10 pb-20 lg:pb-32">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9 }}
           >
-            <div className="flex items-center gap-3 mb-8">
-              <div className="text-sm font-bold tracking-widest text-[#0A0A0A]/50 uppercase mr-1">
+            <div className="mb-8">
+              <div className="text-sm font-bold tracking-widest text-[#0A0A0A]/50 uppercase mb-6">
                 ⭐ Featured
               </div>
-              {FEATURED_PROJECTS.map((p) => (
-                <button
-                  key={p.id}
-                  onClick={() => setActiveId(p.id)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                    activeId === p.id
-                      ? "bg-[#0A0A0A] scale-125"
-                      : "bg-[#0A0A0A]/25 hover:bg-[#0A0A0A]/50"
-                  }`}
-                  aria-label={`Select ${p.cardLabel}`}
-                />
-              ))}
+              <FeaturedDetail project={activeProject} />
             </div>
-            <FeaturedDetail project={activeProject} />
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9 }}
-            className="hidden sm:flex flex-col items-center gap-4"
+            className="flex flex-col items-center w-full overflow-visible"
           >
             <CardSwap activeIndex={activeId} onSelect={setActiveId} />
-            <p className="text-xs tracking-widest uppercase font-bold text-[#0A0A0A]/30 mt-2">
-              Click a card to switch
-            </p>
           </motion.div>
         </div>
 
-        {/* Other projects grid — now with 3D effect */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-20 pb-20">
+        {/* Other projects grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 pt-16 pb-16">
           {MINOR_PROJECTS.map((project, i) => (
             <motion.div
               key={project.title}
@@ -165,40 +164,57 @@ export default function Projects() {
               transition={{ delay: i * 0.1, duration: 0.8 }}
               className="h-full"
             >
-              <a href="https://github.com/RagulM-69" target="_blank" rel="noopener noreferrer" className="block h-full">
-                <ThreeDCard
-                  className="h-full"
-                  cardClassName="h-full bg-[#0A0A0A] rounded-xl border border-[#F5F1EA]/10 p-8 flex flex-col justify-between cursor-pointer overflow-hidden group"
-                  maxRotation={12}
-                  glowOpacity={0.15}
-                  glowColor="245,241,234"
-                  shadowBlur={40}
-                  parallaxOffset={20}
-                >
-                  {/* Ghost number */}
-                  <div className="absolute text-[#F5F1EA]/5 -right-4 -top-8 text-[12rem] font-black pointer-events-none select-none">
-                    0{i + 1}
-                  </div>
+              <ThreeDCard
+                className="h-full"
+                cardClassName="h-full bg-[#111111] rounded-2xl border border-white/8 flex flex-col cursor-default overflow-hidden group"
+                maxRotation={10}
+                glowOpacity={0.10}
+                glowColor="245,241,234"
+                shadowBlur={50}
+                parallaxOffset={12}
+              >
+                {/* Screenshot */}
+                <div className="relative flex-shrink-0 overflow-hidden" style={{ height: 220 }}>
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center bg-[#181818]">
+                      <span className="text-white/10 text-5xl font-black">{project.title[0]}</span>
+                    </div>
+                  )}
+                  <div className="absolute bottom-0 inset-x-0 h-12 bg-gradient-to-t from-[#111111] to-transparent pointer-events-none" />
+                </div>
 
-                  <div className="flex flex-col gap-4">
-                    <span className="text-[#F5F1EA]/50 text-xs font-bold tracking-widest uppercase">
-                      {project.tags}
+                {/* Info panel */}
+                <div className="flex flex-col flex-1 px-6 pt-5 pb-6 gap-3">
+                  <span className="text-white/30 text-[10px] font-bold tracking-[0.2em] uppercase">
+                    {project.tags}
+                  </span>
+                  <h4 className="text-xl font-black tracking-tight text-white/90 leading-snug group-hover:text-white transition-colors duration-300">
+                    {project.title}
+                  </h4>
+                  <p className="text-white/50 text-sm leading-relaxed flex-1">
+                    {project.desc}
+                  </p>
+
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={e => e.stopPropagation()}
+                    className="inline-flex items-center gap-1.5 mt-2 self-start text-white/40 hover:text-white transition-colors duration-200 group/lnk"
+                  >
+                    <span className="text-[11px] tracking-widest uppercase font-bold border-b border-white/15 group-hover/lnk:border-white pb-px transition-colors">
+                      View Project
                     </span>
-                    <h4 className="text-2xl lg:text-3xl font-black tracking-tight text-[#F5F1EA] leading-snug group-hover:text-white transition-colors duration-300">
-                      {project.title}
-                    </h4>
-                    <p className="text-[#F5F1EA]/70 font-medium leading-relaxed mt-2 text-sm">
-                      {project.desc}
-                    </p>
-                    <div className="w-12 h-[2px] bg-[#F5F1EA]/30 mt-4 group-hover:w-full group-hover:bg-[#F5F1EA] transition-all duration-500" />
-                  </div>
-
-                  <div className="flex justify-between items-end text-[#F5F1EA]/60 group-hover:text-[#F5F1EA] transition-colors duration-300 mt-10">
-                    <span className="text-sm tracking-widest uppercase font-bold">View Project</span>
-                    <ArrowUpRight className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-                  </div>
-                </ThreeDCard>
-              </a>
+                    <ArrowUpRight className="w-3.5 h-3.5 group-hover/lnk:translate-x-0.5 group-hover/lnk:-translate-y-0.5 transition-transform duration-200" />
+                  </a>
+                </div>
+              </ThreeDCard>
             </motion.div>
           ))}
         </div>
